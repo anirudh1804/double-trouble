@@ -26,7 +26,7 @@ def test_fetch_token_features(q1, q2):
     SAFE_DIV = 0.0001
 
     with open(os.path.join(BASE_DIR, "stopwords.pkl"), "rb") as f:
-        stopwords = pickle.load(f)
+        STOP_WORDS = pickle.load(f)
     
     token_features = [0.0] * 8
 
