@@ -5,9 +5,11 @@ from fuzzywuzzy import fuzz
 import pickle
 import numpy as np
 
-cv = pickle.load(open('cv.pkl','rb'))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-
+with open(os.path.join(BASE_DIR, "cv.pkl"), "rb") as f:
+    cv = pickle.load(f)
+    
 def test_common_words(q1,q2):
     w1 = set(map(lambda word: word.lower().strip(), q1.split(" ")))
     w2 = set(map(lambda word: word.lower().strip(), q2.split(" ")))
@@ -22,8 +24,9 @@ def test_total_words(q1,q2):
 def test_fetch_token_features(q1, q2):
     SAFE_DIV = 0.0001
 
-    STOP_WORDS = pickle.load(open('stopwords.pkl','rb'))
-
+    with open(os.path.join(BASE_DIR, "stopwords.pkl"), "rb") as f:
+        stopwords = pickle.load(f)
+    
     token_features = [0.0] * 8
 
     # Converting the Sentence into Tokens:
