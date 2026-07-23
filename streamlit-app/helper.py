@@ -4,6 +4,7 @@ import distance
 from fuzzywuzzy import fuzz
 import pickle
 import numpy as np
+import os 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
